@@ -10,5 +10,6 @@ namespace WebApplication6.Models
         public List<Tag> Tags { get; set; }
         public List<Category> Categories { get; set; }
         public List<Image> Images { get; set; }
+        public List<Review> Reviews { get; set; }
     }
 }

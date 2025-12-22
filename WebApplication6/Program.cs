@@ -16,10 +16,15 @@ namespace WebApplication6
             
             app.UseHttpsRedirection();
             app.UseRouting();
+            app.UseStaticFiles();
+
 
             app.UseAuthorization();
 
             app.MapStaticAssets();
+            app.MapControllerRoute(
+                name: "areas",
+                pattern: "{area:exists}/{controller=Dashboard}/{id?}");
             app.MapControllerRoute(
                 name: "default",
                 pattern: "{controller=Home}/{action=Index}/{id?}")

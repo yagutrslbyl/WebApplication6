@@ -7,5 +7,6 @@ namespace WebApplication6.Models
         public string ImageUrl { get; set; }
         public Product Product { get; set; }
         public int ProductId { get; set; }
+        public bool IsMain { get; set; }
     }
 }
