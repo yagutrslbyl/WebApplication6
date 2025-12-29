@@ -1,0 +1,74 @@
+﻿
+@using WebApplication6.Models
+@model List<Review>
+
+@{
+    Layout = "/Areas/Admin/Views/Shared/_Layout.cshtml";
+    int counter = 1;
+}
+
+<!-- Page Heading -->
+<div class="d-flex justify-content-between align-items-center mb-4">
+    <h1 class="h3 text-gray-800">Sliders</h1>
+    <a asp-area="Admin"
+       asp-controller="Review"
+       asp-action="Create"
+       class="btn btn-primary btn-sm">
+        <i class="fas fa-plus"></i> Create
+    </a>
+</div>
+
+<div class="card shadow mb-4">
+    <div class="card-header py-3">
+        <h6 class="m-0 font-weight-bold text-primary">Slider List</h6>
+    </div>
+
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                <thead class="thead-light">
+                    <tr>
+                        <th>#</th>
+                        <th>Id</th>
+                        <th>Comment</th>
+                        <th>Product Id</th>
+                       
+                        <th style="width:160px">Actions</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    @foreach (var review in Model)
+                    {
+                        <tr>
+                            <td>@counter</td>
+                            <td>@review.Comment</td>
+                            <td>@review.ProductId</td>
+                     
+                            <td>
+                                <a asp-area="Admin"
+                                   asp-controller="Review"
+                                   asp-action="Create"
+                                   asp-route-id="@review.Id"
+                                   class="btn btn-warning btn-sm">
+                                    <i class="fas fa-edit"></i>
+                                </a>
+
+                                <a asp-area="Admin"
+                                   asp-controller="Product"
+                                   asp-action="Delete"
+                                   asp-route-id="@review.Id"
+                                   class="btn btn-danger btn-sm"
+                                   onclick="return confirm('Are you sure?')">
+                                    <i class="fas fa-trash"></i>
+                                </a>
+                            </td>
+                        </tr>
+
+                        counter++;
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

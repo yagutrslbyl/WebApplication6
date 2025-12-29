@@ -1,0 +1,35 @@
+﻿@using Microsoft.Build.Tasks.Deployment.Bootstrapper
+@using WebApplication6.Areas.Admin.ViewModels.Review
+@using WebApplication6.Models
+
+@model CreateReviewVM
+
+@{
+    Layout = "/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container">
+    <h1>Create Review</h1>
+    <form asp-controller="Review" asp-action="Create" method="post">
+        <div class="form-group">
+            <label for="NameInput">Name</label>
+            <input asp-for="Comment"
+                   type=" text"
+                   class="form-control"
+                   id="NameInput"
+                   placeholder="Enter Comment">
+            <span asp-validation-for="Comment" class="text-danger"></span>
+            <div class="form-group">
+               <label for="ProductId">Example Select</label>
+               <select asp-for="ProductId" class="form-control">
+                    @foreach(var product in ViewBag.Products)
+                    {
+                        <option value="@product.Id"> @product.Name</option>
+                    }
+                </select>
+            </div>
+       
+
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+</div>
